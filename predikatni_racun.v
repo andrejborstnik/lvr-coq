@@ -1,4 +1,4 @@
-(* Osnovne vaje iz logike 1. reda. *)
+﻿(* Osnovne vaje iz logike 1. reda. *)
 
 (* Uporabimo knižnico, ki ima taktiko omega. Ta zna delati z naravnimi števili,
    če nastopajo samo linearne funkcije. *)

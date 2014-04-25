@@ -390,7 +390,7 @@ Section Zabava.
   Definition vaja5_1_2 : A * B -> A + B:=
    fun (x : A * B) => inr (snd x).
 
-  (* Koliko funkcij tipa (A * A) * A -> A * A lahko definiraš? Šest! *)
+  (* Koliko funkcij tipa (A * A) * A -> A * A lahko definiraš? Devet! *)
   Definition vaja5_2_XX : (A * A) * A -> A * A.
   Admitted.
 
