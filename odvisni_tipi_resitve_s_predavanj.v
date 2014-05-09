@@ -105,18 +105,14 @@ Section Vaje1.
   Lemma vaja_1 : forall n : nat, exists m : nat, n < m.
   Proof.
     (* predvanja *)
-    intro n.
-    exists (S n).
-    auto.
+    admit.
   Qed.
 
   (** Zapišimo jo s tipi. Enak dokaz še vedno deluje. *)
   Lemma vaja1_2 : forall n : nat, { m : nat & n < m }.
   Proof.
     (* predavanja *)
-    intro n.
-    exists (S n).
-    auto.
+    admit.
   Qed.
 
   (** Kako bi rešili vajo neposredno, z definicijo funkcije?
@@ -131,15 +127,11 @@ Section Vaje1.
       To naredimo s taktiko [refine e], kjer je [e] delno zgrajeni izraz.
       Nedokončane dele označimo s podčrtajem [_].
    *)
-  Definition vaja1_3 : forall n : nat, { m : nat & n < m }.
-  Proof.
-    (* predavanja. Dele, ki jih ne znam napisat damo "_".*)
-    refine (fun n : nat => existT _ (S n) _).
-    auto.
   Lemma vaja1_3 : forall n : nat, { m : nat & n < m }.
   Proof.
     (* predavanja *)
     admit.
+  Defined.
 
 End Vaje1.
 
@@ -156,11 +148,7 @@ Section Frobenius.
     (exists a : A, Q /\ P a) -> Q /\ exists a : A, P a.
   Proof.
     (* predavanja *)
-    intros [a [H G]].
-    split.
-      - assumption.
-      - exists a.
-        assumption.
+    admit.
   Qed.
 
   (** Tipi (tu pišemo [(.....)%type], sicer Coq misli, da * pomeni množenje
@@ -169,32 +157,21 @@ Section Frobenius.
     ({ a : A & Q * P a } -> Q * { a : A & P a })%type.
   Proof.
     (* predavanja *)
-    intros [a [H G]].
-    split.
-      - assumption.
-      - exists a.
-        assumption.
+    admit.
   Qed.
 
   (** Neposredna definicija *)
   Definition frobenius3 (A : Type) (P : A -> Type) (Q : Type) :
-    ({ a : A & Q * P a } -> Q * { a : A & P a })%type :=
-    (fun p => (fst (projT2 p), existT _ (projT1 p) (snd (projT2 p)))).
-=======
     ({ a : A & Q * P a } -> Q * { a : A & P a })%type.
+  (* predavanja *)
+  Admitted.
 
   (** Za vajo naredi isto z obratno implikacijo. Najprej s taktikami: *)
   Theorem frobenius4 (A : Type) (P : A -> Prop) (Q : Prop) :
     (Q /\ exists a : A, P a) -> exists a : A, Q /\ P a.
   Proof.
     (* vaje *)
-    intro.
-    destruct H.
-    destruct H0.
-    exists x.
-    split.
-      - assumption.
-      - assumption.
+    admit.
   Qed.
 
   (** Preveri, ali isti dokaz delue tudi s tipi. *)
@@ -202,19 +179,14 @@ Section Frobenius.
     (Q * { a : A & P a } -> { a : A & Q * P a })%type.
   Proof.
     (* vaje *)
-    intro H.
-    destruct H.
-    destruct s.
-    exists x.
-    split.
-      - assumption.
-      - assumption.
+    admit.
   Qed.
 
   (** Še neposredna konstrukcija. *)
   Definition frobenius6 (A : Type) (P : A -> Type) (Q : Type) :
-    (Q * { a : A & P a } -> { a : A & Q * P a })%type :=
-    (fun p => (existT _ (projT1 (snd p)) (fst p, projT2(snd p)))).
+    (Q * { a : A & P a } -> { a : A & Q * P a })%type.
+  (* vaje *)
+  Admitted.
 
 End Frobenius.
 
@@ -224,14 +196,14 @@ Section Vaje2.
     (forall (a : A) (b : B), P (a, b)) -> forall (b : B) (a : A), P (a, b).
   Proof.
     (* vaje *)
-    intros.
-    auto.
+    admit.
   Qed.
 
   (** Definiraj neposredno. *)
   Definition vaja2_2 (A B : Type) (P : A * B -> Prop) :
-    (forall (a : A) (b : B), P (a, b)) -> forall (b : B) (a : A), P (a, b):=
-    (fun p => fun b a => p a b).
+    (forall (a : A) (b : B), P (a, b)) -> forall (b : B) (a : A), P (a, b).
+  (* vaje *)
+  Admitted.
 
   (** Definiraj s taktikami. *)
   Definition vaja2_3 (A : Type) (P : A -> Type) (Q : forall (a : A), P a -> Type) :
@@ -239,16 +211,15 @@ Section Vaje2.
     (forall u : {a : A & P a}, Q (projT1 u) (projT2 u)).
   Proof.
     (* vaje *)
-    intros.
-    auto.
+    admit.
   Defined.
 
   (** Definiraj neposredno. *)
   Definition vaja2_4 (A : Type) (P : A -> Type) (Q : forall (a : A), P a -> Type) :
     (forall (a : A) (p : P a), Q a p) ->
-    (forall u : {a : A & P a}, Q (projT1 u) (projT2 u)):=
-    (fun p => fun u => p (projT1 u) (projT2 u)).
-
+    (forall u : {a : A & P a}, Q (projT1 u) (projT2 u)).
+  (* vaje *)
+  Admitted.
 End Vaje2.
 
 Section AksiomIzbire.
@@ -259,9 +230,7 @@ Section AksiomIzbire.
   Proof.
     refine (fun g => existT _ (fun a => projT1 (g a)) _).
     (* vaje *)
-    intros.
-    destruct g.
-    auto.
+    admit.
   Defined.
  
   (** Ali lahko dokažeš [izbira], če ga spremeniš v logično obliko? *)
@@ -269,7 +238,7 @@ Section AksiomIzbire.
     (forall (a : A), exists (b : B), P (a, b)) -> exists (f : A -> B), forall (a : A), P (a, f a).
   Proof.
     (* vaje *)
-    intros.
+    admit.
   Qed.
 
   (** Reši s taktikami. *)
